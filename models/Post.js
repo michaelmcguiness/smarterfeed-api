@@ -5,6 +5,7 @@ const postSchema = new Schema({
   url: String,
   createdAt: String,
   score: Number,
+  tag: String,
   comments: [
     {
       text: String,
