@@ -1,0 +1,24 @@
+{
+  "name": "smarterfeed-api",
+  "version": "1.0.0",
+  "description": "GraphQL server that uses Node and Express to communicate to a MongoDB Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelmcguiness/smarterfeed-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelmcguiness/smarterfeed-api/issues"
+  },
+  "homepage": "https://github.com/michaelmcguiness/smarterfeed-api#readme",
+  "dependencies": {
+    "apollo-server": "^2.15.1",
+    "graphql": "^15.3.0"
+  }
+}
