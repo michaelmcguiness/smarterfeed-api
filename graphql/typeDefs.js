@@ -5,10 +5,25 @@ module.exports = gql`
     id: ID!
     title: String!
     url: String!
-    tag: String!
+    tag: AllowedTag!
     createdAt: String!
     score: Int!
-    username: String
+    username: String!
+    comments: [Comment]!
+    upvotes: [Upvote]!
+  }
+
+  type Comment {
+    id: ID!
+    createdAt: String!
+    username: String!
+    body: String!
+  }
+
+  type Upvote {
+    id: ID!
+    createdAt: String!
+    username: String!
   }
 
   type User {
@@ -27,10 +42,22 @@ module.exports = gql`
 
   type Query {
     getPosts: [Post]
+    getPost(postId: ID!): Post
   }
 
   type Mutation {
     register(registerInput: RegisterInput): User!
     login(username: String!, password: String!): User!
+    createPost(url: String!, title: String!, tag: String!): Post!
+    deletePost(postId: ID!): String!
+    createComment(postId: String!, body: String!): Post!
+    deleteComment(postId: ID!, commentId: ID!): Post!
+    upvotePost(postId: ID!): Post!
+  }
+
+  enum AllowedTag {
+    NEWS
+    TECHNOLOGY
+    FINANCE
   }
 `;

@@ -6,11 +6,12 @@ const postSchema = new Schema({
   createdAt: String,
   score: Number,
   tag: String,
+  username: String,
   comments: [
     {
-      text: String,
       username: String,
       createdAt: String,
+      body: String,
     },
   ],
   upvotes: [
