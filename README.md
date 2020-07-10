@@ -1,2 +1,2 @@
-# open-alpha-api
-A GraphQL, Node.js, and Sequelize backend api for Open Alpha
+# smarterfeed-api
+GraphQL server that uses Node and Express to communicate to a MongoDB Database
