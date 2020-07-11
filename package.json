@@ -4,6 +4,7 @@
   "description": "GraphQL server that uses Node and Express to communicate to a MongoDB Database",
   "main": "index.js",
   "scripts": {
+    "serve": "node index",
     "start": "nodemon index"
   },
   "repository": {
