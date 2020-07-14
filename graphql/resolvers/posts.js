@@ -1,8 +1,4 @@
-const {
-  AuthenticationError,
-  UserInputError,
-  buildSchemaFromTypeDefinitions,
-} = require("apollo-server");
+const { AuthenticationError, UserInputError } = require("apollo-server");
 
 const Post = require("../../models/Post");
 const checkAuth = require("../../util/checkAuth");
@@ -50,6 +46,8 @@ module.exports = {
         username: user.username,
         createdAt: new Date().toISOString(),
         score: 0,
+        commentCount: 0,
+        upvoteCount: 0,
       });
 
       const post = await newPost.save();
@@ -79,12 +77,14 @@ module.exports = {
           post.upvotes = post.upvotes.filter(
             (upvote) => upvote.username !== username
           );
+          post.upvoteCount = post.upvoteCount - 1;
         } else {
           // not upvoted, upvote post
           post.upvotes.push({
             username,
             createdAt: new Date().toISOString(),
           });
+          post.upvoteCount = post.upvoteCount + 1;
         }
 
         await post.save();

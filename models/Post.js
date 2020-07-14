@@ -7,6 +7,7 @@ const postSchema = new Schema({
   score: Number,
   tag: String,
   username: String,
+  commentCount: Number,
   comments: [
     {
       username: String,
@@ -14,6 +15,7 @@ const postSchema = new Schema({
       body: String,
     },
   ],
+  upvoteCount: Number,
   upvotes: [
     {
       username: String,
