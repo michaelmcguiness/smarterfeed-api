@@ -10,7 +10,7 @@ module.exports.updatePostRankings = async () => {
     const postDate = new Date(post.createdAt);
     const ageInHours = Math.floor(((today - postDate) % 86400000) / 3600000);
     post.score =
-      Math.pow(post.upvoteCount + 1, 0.8) / Math.pow(ageInHours + 2, 1.8);
+      Math.pow(post.upvoteCount, 0.8) / Math.pow(ageInHours + 2, 1.8);
     await post.save();
   });
 };
