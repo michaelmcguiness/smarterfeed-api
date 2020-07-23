@@ -7,7 +7,10 @@ module.exports = {
   Query: {
     async getPosts() {
       try {
-        const posts = await Post.find().sort({ score: -1 });
+        const posts = await Post.find().sort([
+          [score, -1],
+          [createdAt, -1],
+        ]);
         return posts;
       } catch (err) {
         throw new Error(err);
@@ -45,7 +48,7 @@ module.exports = {
         user: user.id,
         username: user.username,
         createdAt: new Date().toISOString(),
-        score: 0,
+        score: 100,
         commentCount: 0,
         upvoteCount: 0,
       });
