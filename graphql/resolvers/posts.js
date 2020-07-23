@@ -8,8 +8,8 @@ module.exports = {
     async getPosts() {
       try {
         const posts = await Post.find().sort([
-          [score, -1],
-          [createdAt, -1],
+          ["score", -1],
+          ["createdAt", -1],
         ]);
         return posts;
       } catch (err) {
