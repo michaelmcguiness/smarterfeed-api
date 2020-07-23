@@ -1,16 +1,16 @@
-module.exports.calcScore = (today, upvoteCount, createdAt) => {
+const Post = require("../models/Post");
+
+module.exports.updatePostRankings = async () => {
   // ranking formula for posts
   // exponent on time is higher than exponent on upvotes
   // (evn if item keeps getting upvotes, eventually denominator will overwhelm and ranking will drop)
-  const postDate = new Date(createdAt);
-  const ageInHours = Math.floor(((today - postDate) % 86400000) / 3600000);
-  console.log(Math.pow(upvoteCount - 1, 0.8));
-  const newScore = Math.round(
-    Math.pow(upvoteCount - 1, 0.8) / Math.pow(ageInHours + 2, 1.8)
-  );
-  if (isNaN(newScore)) {
-    return 0;
-  } else {
-    return newScore;
-  }
+  const today = new Date();
+  const posts = await Post.find();
+  posts.forEach(async function (post) {
+    const postDate = new Date(post.createdAt);
+    const ageInHours = Math.floor(((today - postDate) % 86400000) / 3600000);
+    post.score =
+      Math.pow(post.upvoteCount, 0.8) / Math.pow(ageInHours + 2, 1.8);
+    await post.save();
+  });
 };

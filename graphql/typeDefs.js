@@ -7,7 +7,7 @@ module.exports = gql`
     url: String!
     tag: AllowedTag!
     createdAt: String!
-    score: Int!
+    score: Float!
     username: String!
     comments: [Comment]!
     upvotes: [Upvote]!

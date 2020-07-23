@@ -2,6 +2,8 @@ require("dotenv").config();
 
 const { ApolloServer } = require("apollo-server");
 const mongoose = require("mongoose");
+const cron = require("node-cron");
+const { updatePostRankings } = require("./util/postRanking");
 
 const typeDefs = require("./graphql/typeDefs");
 const resolvers = require("./graphql/resolvers");
@@ -13,6 +15,9 @@ const server = new ApolloServer({
   resolvers,
   context: ({ req }) => ({ req }),
 });
+
+// update scores at the 59th minute of every hour
+cron.schedule("59 * * * *", updatePostRankings);
 
 mongoose
   .connect(process.env.MONGODB, {
