@@ -17,7 +17,7 @@ const server = new ApolloServer({
 });
 
 // update scores at the 59th minute of every hour
-cron.schedule("59 * * * *", updatePostRankings);
+cron.schedule("* * * * *", updatePostRankings);
 
 mongoose
   .connect(process.env.MONGODB, {
