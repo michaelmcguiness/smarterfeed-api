@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/michaelmcguiness/smarterfeed-api#readme",
   "dependencies": {
-    "apollo-server": "^2.15.1",
+    "apollo-server": "^2.25.4",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "graphql": "^15.3.0",
